@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Shopping Cart - RR Handmade{% endblock %}
+
+{% block content %}
+<h2>Your Shopping Cart</h2>
+<div class="cart-items">
+    {% for item in cart.items %}
+        <div class="cart-item">
+            <img src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
+            <p>{{ item.product.name }}</p>
+            <p>Quantity: {{ item.quantity }}</p>
+            <p>Price: {{ item.product.price }}</p>
+            <form action="{{ url_for('remove_from_cart', product_id=item.product.id) }}" method="post">
+                <button type="submit">Remove</button>
+            </form>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
