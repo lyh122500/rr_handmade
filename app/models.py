@@ -26,3 +26,4 @@ class Cart(db.Document):
     user = db.ReferenceField('User', reverse_delete_rule=db.CASCADE)
     items = db.ListField(db.EmbeddedDocumentField(CartItem))
 
+
